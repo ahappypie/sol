@@ -1,0 +1,2 @@
+# sol
+Kubernetes reference architecture
