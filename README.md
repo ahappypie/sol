@@ -1,4 +1,13 @@
 # Sol
+
+## Project Status
+Sol is currently under heavy development. The primary development hardware is a bare metal, single node `kubeadm` bootstrapped cluster. The following tools have been successfully deployed:
+* Kubernetes: v1.13.3
+* etcd: v3.2.24
+* CoreDNS: v1.2.6
+* WeaveNet: v2.5.1
+* Rook: v0.9.3 (Ceph v13.2.4-20190109)
+
 ### Goals
 Sol aims to present basic configuration for a Kubernetes reference architecture, using cloud native tools to form the backbone of any new cluster. In short, **Sol is a platform**.
 
