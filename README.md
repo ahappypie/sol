@@ -6,7 +6,9 @@ Sol is currently under heavy development. While the primary development hardware
 * etcd v3.3.10
 * CoreDNS v1.3.1
 * WeaveNet v2.5.2
+* DigitalOcean Cloud Controller v0.1.15 (commit 8cc7ee3)
 * Ambassador v0.73.0
+* CertManager v0.8.1
 * Rook v1.0.4
   * Ceph v14.2.1-20190430
 * kube-prometheus v0.30.0
@@ -18,9 +20,10 @@ Sol is currently under heavy development. While the primary development hardware
   * ElasticSearch v7.1.0
   * Kibana v7.1.0
 * Fluent Bit v1.2.1
-* DigitalOcean Cloud Controller v0.1.15 (commit 8cc7ee3)
+
+This deployment is named **MERCURY**.
 
 ### Notes
-The tools above were deployed with minimal configuration. Basically, what's in the YAML is what's running in the cluster. No runtime hacks or ConfigMap patches. That probably means you can't just `kubectl apply -f .`. The goal is to turn the installation of these tools into a simple shell command, but it's not quite there yet. However, if you like the idea, feel free to get in contact or submit a pull request.
+The tools above were deployed with minimal configuration. Basically, what's in the YAML is what's running in the cluster. No runtime hacks or ConfigMap patches. That means you can just `kubectl apply -f .`, **but you probably should avoid that**. Read through each tool first. I'm quite confident that these manifests are not perfect. If you see something that could be improved or a new feature that you want to add, feel free to get in contact, add an issue or submit a pull request.
 
 ***A special note about the DigitalOcean Cloud Controller:*** The controller (aka CCM) is responsible for turning LoadBalancer-type Service annotations and DigitalOcean Block Storage-type StorageClass annotations into appropriate DigitalOcean-managed resources (Load Balancers and Block Storage volumes, respectively). Because of the way CCMs are built, they require the matching Kubernetes API as a dependency. At the time of deployment, the DigitalOcean team had not yet released full support for Kubernetes v1.15.x, but the CCM's development branch was stable enough to build manually and deploy. This image lives at [quay.io](https://quay.io/repository/ahappypie/digitalocean-cloud-controller-manager), not the official DigitalOcean repository. This branch is likely to switch to the official build soon.

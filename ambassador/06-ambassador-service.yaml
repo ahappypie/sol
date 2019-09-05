@@ -1,0 +1,49 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ambassador
+  annotations:
+    service.beta.kubernetes.io/do-loadbalancer-healthcheck-protocol: "tcp"
+    service.beta.kubernetes.io/do-loadbalancer-tls-passthrough: "true"
+    service.beta.kubernetes.io/do-loadbalancer-protocol: "https"
+    service.beta.kubernetes.io/do-loadbalancer-algorithm: "round_robin"
+    service.beta.kubernetes.io/do-loadbalancer-tls-ports: "443"
+    service.beta.kubernetes.io/do-loadbalancer-enable-proxy-protocol: "true"
+    getambassador.io/config: |
+      ---
+      apiVersion: ambassador/v1
+      kind:  Module
+      name:  ambassador
+      config:
+        use_remote_address: true
+        use_proxy_proto: true
+        enable_http10: true
+      ---
+      apiVersion: ambassador/v1
+      kind: Module
+      name: tls
+      config:
+        server:
+          enabled: True
+          redirect_cleartext_from: 8080
+          secret: ambassador-certs
+      ---
+      apiVersion: ambassador/v1
+      kind: TLSContext
+      name: mercury
+      hosts:
+      - mercury.*.net
+      secret: ambassador-certs
+spec:
+  type: LoadBalancer
+  externalTrafficPolicy: Local
+  ports:
+  - name: https
+    port: 443
+    targetPort: 8443
+  - name: http
+    port: 80
+    targetPort: 8080
+  selector:
+    service: ambassador
