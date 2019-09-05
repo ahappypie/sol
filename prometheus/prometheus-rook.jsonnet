@@ -7,10 +7,13 @@ local pvc = k.core.v1.persistentVolumeClaim;  // https://kubernetes.io/docs/refe
 
 local kp =
   (import 'kube-prometheus/kube-prometheus.libsonnet') +
-  (import 'kube-prometheus/kube-prometheus-bootkube.libsonnet') +
+  (import 'kube-prometheus/kube-prometheus-kubeadm.libsonnet') +
   {
     _config+:: {
       namespace: 'prometheus',
+      prometheus+:: {
+        namespaces+: ['default', 'kube-system', 'prometheus', 'rook-ceph', 'cert-manager', 'elastic-system', 'logging'],
+      }
     },
 
     prometheus+:: {
@@ -50,6 +53,7 @@ local kp =
 
   };
 
+{ ['00namespace-' + name]: kp.kubePrometheus[name] for name in std.objectFields(kp.kubePrometheus) } +
 { ['0prometheus-operator-' + name]: kp.prometheusOperator[name] for name in std.objectFields(kp.prometheusOperator) } +
 { ['node-exporter-' + name]: kp.nodeExporter[name] for name in std.objectFields(kp.nodeExporter) } +
 { ['kube-state-metrics-' + name]: kp.kubeStateMetrics[name] for name in std.objectFields(kp.kubeStateMetrics) } +

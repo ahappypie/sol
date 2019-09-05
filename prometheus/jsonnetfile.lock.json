@@ -4,11 +4,11 @@
             "name": "kube-prometheus",
             "source": {
                 "git": {
-                    "remote": "https://github.com/coreos/prometheus-operator",
-                    "subdir": "contrib/kube-prometheus/jsonnet/kube-prometheus/"
+                    "remote": "https://github.com/coreos/kube-prometheus",
+                    "subdir": "jsonnet/kube-prometheus"
                 }
             },
-            "version": "7a25bf6b6bb2347dacb235659b73bc210117acc7"
+            "version": "76e357abfcfe6fe74b5927229b0d5eb52f3066a8"
         },
         {
             "name": "ksonnet",
@@ -18,7 +18,7 @@
                     "subdir": ""
                 }
             },
-            "version": "d03da231d6c8bd74437b74a1e9e8b966f13dffa2"
+            "version": "0d2f82676817bbf9e4acf6495b2090205f323b9f"
         },
         {
             "name": "kubernetes-mixin",
@@ -28,7 +28,7 @@
                     "subdir": ""
                 }
             },
-            "version": "4fc3fb3ca72059040fab5d94a0ac0933697065ee"
+            "version": "af494738e1709998696ffbce9296063a20c80692"
         },
         {
             "name": "grafonnet",
@@ -38,7 +38,7 @@
                     "subdir": "grafonnet"
                 }
             },
-            "version": "11022f5e920ac1ea960556193e3f0ab57d70d7c5"
+            "version": "3264a8ab6efa23d55da45ea3a3d3b39e86696c76"
         },
         {
             "name": "grafana-builder",
@@ -48,7 +48,7 @@
                     "subdir": "grafana-builder"
                 }
             },
-            "version": "e0a714ea8ed32ee468920871448ab76e7acb1e64"
+            "version": "76258e92c20a2bca74e7f2630c3f8d562919ec86"
         },
         {
             "name": "grafana",
@@ -58,7 +58,7 @@
                     "subdir": "grafana"
                 }
             },
-            "version": "9ddf5a198b0f7c898dc061158ea427112acbae11"
+            "version": "c27d2792764867cdaf6484f067cc875cb8aef2f6"
         },
         {
             "name": "prometheus-operator",
@@ -68,7 +68,7 @@
                     "subdir": "jsonnet/prometheus-operator"
                 }
             },
-            "version": "338addbabc8a29b46840df0bb0355c12b96a6f21"
+            "version": "18fbf558ab7f8809fd610a3dc50bf483508dc1bb"
         },
         {
             "name": "etcd-mixin",
@@ -78,7 +78,7 @@
                     "subdir": "Documentation/etcd-mixin"
                 }
             },
-            "version": "2c69559819d3d5b55b0d33ece05d9503101957b0"
+            "version": "948e276ca73d3eb09391829d8ac317dbda8c07a1"
         }
     ]
 }

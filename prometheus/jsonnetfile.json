@@ -4,11 +4,11 @@
             "name": "kube-prometheus",
             "source": {
                 "git": {
-                    "remote": "https://github.com/coreos/prometheus-operator",
-                    "subdir": "contrib/kube-prometheus/jsonnet/kube-prometheus/"
+                    "remote": "https://github.com/coreos/kube-prometheus",
+                    "subdir": "jsonnet/kube-prometheus"
                 }
             },
-            "version": "v0.29.0"
+            "version": "release-0.1"
         }
     ]
 }
