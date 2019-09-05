@@ -1,27 +1,26 @@
 # Sol
 
 ## Project Status
-Sol is currently under heavy development. The primary development hardware is a bare metal, single node `kubeadm` bootstrapped cluster. The following tools have been successfully deployed:
-* Kubernetes: v1.13.3
-* etcd: v3.2.24
-* CoreDNS: v1.2.6
-* WeaveNet: v2.5.1
-* Rook: v0.9.3 (Ceph v13.2.4-20190109)
+Sol is currently under heavy development. While the primary development hardware was a bare metal, single node `kubeadm` bootstrapped cluster, this branch tracks a terraform bootstrapped DigitalOcean cluster. This deployment has been in production at Regent LP since July 2019. The current tools managed are:
+* Kubernetes v1.15.1
+* etcd v3.3.10
+* CoreDNS v1.3.1
+* WeaveNet v2.5.2
+* Ambassador v0.73.0
+* Rook v1.0.4
+  * Ceph v14.2.1-20190430
+* kube-prometheus v0.30.0
+  * Prometheus v2.7.2
+  * Grafana v6.0.1
+  * Alertmanager v0.17.0
+  * node-exporter v0.17.0
+* eck-operator v0.8.1
+  * ElasticSearch v7.1.0
+  * Kibana v7.1.0
+* Fluent Bit v1.2.1
+* DigitalOcean Cloud Controller v0.1.15 (commit 8cc7ee3)
 
-### Goals
-Sol aims to present basic configuration for a Kubernetes reference architecture, using cloud native tools to form the backbone of any new cluster. In short, **Sol is a platform**.
+### Notes
+The tools above were deployed with minimal configuration. Basically, what's in the YAML is what's running in the cluster. No runtime hacks or ConfigMap patches. That probably means you can't just `kubectl apply -f .`. The goal is to turn the installation of these tools into a simple shell command, but it's not quite there yet. However, if you like the idea, feel free to get in contact or submit a pull request.
 
-### Core Tools
-+ [etcd](https://etcd.io) - CoreOS etcd is a key value store, used to provide a backing store for Kubernetes clusters.
-+ [WeaveNet](https://weave.works/oss/net) - WeaveNet (from WeaveWorks) is an overlay network that forms a mesh, in the case of Kubernetes, for the pod network. It supports multicast and can bypass the overlay on certain providers.
-+ [Rook](https://rook.io) - Rook is a storage orchestrator built from the ground up for Kubernetes. It provisions the excellent [Ceph](https://ceph.com) block storage system, and has alpha support for additional cloud-native storage systems like [Minio](https://minio.io) (S3-compatible object storage) and [EdgeFS](https://edgefs.io) (geo-transparent storage), along with controllers for databases like [CockroachDB](https://cockroachlabs.com) and [Apache Cassandra](https://cassandra.apache.org) and even the ability to deploy a good, old-fashioned NFS.
-+ [Istio](https://istio.io) - Built on Lyft's [Envoy](https://envoyproxy.io) proxy, Istio manages a series of tools to create a service mesh and manage ingress and egress in Kubernetes. Istio has first-class support for [GRPC](https://grpc.io) and also integrates with metrics and tracing tools.
-+ [Prometheus](https://prometheus.io) - Built by Soundcloud and based on Google's Borgmon, Prometheus is a metrics and alerting tool that uses a wide array of integrations. It collects time series data from every level of the stack - hardware, Kubernetes itself and your applications.
-+ [ElasticSearch](https://elastic.co/products/elasticsearch)/[Fluentd](https://fluent.org)/[Kibana](https://elastic.co/products/kibana) - The venerable "EFK" stack, using Fluentd-based FluentBit as a forwarding service, with ElasticSearch for indexing and search, and Kibana for visualization. As a bonus, ElasticSearch can be reused by any number of applications looking for an indexing and search service.
-+ [Jaeger](https://jaegertracing.io) - [OpenTracing](https://opentracing.io)-compatible tracing system originally built by Uber. Jaeger and OpenTracing trace calls within your applications and integrate with Istio to trace calls within your service mesh. Spans can be stored in ElasticSearch, which means you don't have to deploy yet another tool.
-
-### Additional tools
-+ [NATS](https://nats.io) - Lightweight message queue written in Go. NATS uses the Raft consensus algorithm to avoid heavy external coordinators like ZooKeeper. It also has a streaming layer than can be deployed on top of an existing NATS cluster to provide durable delivery.
-
-### More reading
-All of these tools were chosen in part because they have significant community backing. Check out the respective projects here on Github. If there's another tool you're looking for, chances are it's listed on the Cloud Native Computing Foundation's [Landscape](https://github.com/cncf/landscape).
+***A special note about the DigitalOcean Cloud Controller:*** The controller (aka CCM) is responsible for turning LoadBalancer-type Service annotations and DigitalOcean Block Storage-type StorageClass annotations into appropriate DigitalOcean-managed resources (Load Balancers and Block Storage volumes, respectively). Because of the way CCMs are built, they require the matching Kubernetes API as a dependency. At the time of deployment, the DigitalOcean team had not yet released full support for Kubernetes v1.15.x, but the CCM's development branch was stable enough to build manually and deploy. This image lives at [quay.io](https://quay.io/repository/ahappypie/digitalocean-cloud-controller-manager), not the official DigitalOcean repository. This branch is likely to switch to the official build soon.
