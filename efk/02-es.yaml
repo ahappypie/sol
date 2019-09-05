@@ -1,0 +1,47 @@
+apiVersion: elasticsearch.k8s.elastic.co/v1alpha1
+kind: Elasticsearch
+metadata:
+  namespace: logging
+  labels:
+    controller-tools.k8s.io: "1.0"
+  name: elasticsearch
+spec:
+  version: "7.1.0"
+  nodes:
+  - nodeCount: 3
+    config:
+      node.master: true
+      node.data: false
+      node.ingest: false
+      cluster.remote.connect: false
+    podTemplate:
+      spec:
+        containers:
+        - name: elasticsearch-m
+          resources:
+            limits:
+              memory: 1Gi
+              cpu: 0.5
+  - nodeCount: 3
+    config:
+      node.master: false
+      node.data: true
+      node.ingest: true
+    podTemplate:
+      spec:
+        containers:
+        - name: elasticsearch-di
+          resources:
+            limits:
+              memory: 2Gi
+              cpu: 1
+    volumeClaimTemplates:
+    - metadata:
+        name: es-di-vol
+      spec:
+        accessModes:
+        - ReadWriteOnce
+        resources:
+          requests:
+            storage: 20Gi
+        storageClassName: rook-ceph-block

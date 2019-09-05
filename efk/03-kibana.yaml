@@ -1,0 +1,21 @@
+apiVersion: kibana.k8s.elastic.co/v1alpha1
+kind: Kibana
+metadata:
+  namespace: logging
+  labels:
+    controller-tools.k8s.io: "1.0"
+  name: kibana
+spec:
+  version: "7.1.0"
+  elasticsearch:
+    url: https://elasticsearch-es:9200
+    auth:
+      # reference to a secret containing credentials in the given key
+      secret:
+        name: elasticsearch-elastic-user
+        key: elastic # key is the user, value is the password for that user
+    caCertSecret: elasticsearch-ca # reference to a secret containing a pem certificate at key "ca.pem"
+  featureFlags:
+    nodeCertificates:
+      enabled: true
+  nodeCount: 1
