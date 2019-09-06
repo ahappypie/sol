@@ -13,8 +13,7 @@ As noted on the [project readme](https://github.com/digitalocean/digitalocean-cl
 * Make sure to change in the image tag in `deployment.yaml` to reflect the appropriate CCM image.
 
 ### Applying Manifests
-* Apply the secret, then the deployment.
-* Check the CCM logs to verify the deployment.
+* **DO NOT apply these manifests**. This is handled by the Terraform provisioner.
 
 ## Looking for Help
 I'm not sure what can be done to ease this process, but if you are using the CCM, I'm sure the DO team would like to see any issues or pull requests in the [repository](https://github.com/digitalocean/digitalocean-cloud-controller-manager).

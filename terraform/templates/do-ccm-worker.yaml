@@ -1,0 +1,12 @@
+apiVersion: kubeadm.k8s.io/v1beta2
+kind: JoinConfiguration
+nodeRegistration:
+  kubeletExtraArgs:
+    cloud-provider: "external"
+    provider-id: "digitalocean://$DROPLET_ID"
+discovery:
+  bootstrapToken:
+    token: a.b
+    apiServerEndpoint: 6443
+    caCertHashes:
+      - sha256
