@@ -1,7 +1,7 @@
 # Sol
 
 ## Project Status
-Sol is currently under heavy development. While the primary development hardware was a bare metal, single node `kubeadm` bootstrapped cluster, this branch tracks a terraform bootstrapped DigitalOcean cluster. This deployment has been in production at Regent LP since July 2019. The current tools managed are:
+Sol is currently under heavy development. While the primary development hardware was a bare metal, single node `kubeadm` bootstrapped cluster, this branch tracks a terraform bootstrapped DigitalOcean cluster. This deployment has been in production at [Regent LP](https://www.regentlp.com) since July 2019. The current tools managed are:
 * Kubernetes v1.15.1
 * etcd v3.3.10
 * CoreDNS v1.3.1
