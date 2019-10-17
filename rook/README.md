@@ -21,6 +21,10 @@
 * Apply manifests in order. You may need to wait briefly for the operator and storage cluster to come up.
 * Test the deployment by attempting to bind a small PersistentVolumeClaim.
 
+### Upgrading to v1.1
+* Best to follow the directions as per the [documentation](https://rook.io/docs/rook/v1.1/ceph-upgrade.html).
+* However, at some point I would like to rewrite the base manifests to deploy 1.1 (or whatever the latest is) by default.
+
 ## Looking for Help
 I'm sure there are additional customizations that could be baked in here by default. Feel free to suggest them!
 

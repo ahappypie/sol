@@ -7,15 +7,15 @@ Sol is currently under heavy development. While the primary development hardware
 * CoreDNS v1.3.1
 * WeaveNet v2.5.2
 * DigitalOcean Cloud Controller v0.1.15 (commit 8cc7ee3)
-* Ambassador v0.73.0
-* CertManager v0.8.1
-* Rook v1.0.4
-  * Ceph v14.2.1-20190430
-* kube-prometheus v0.30.0
-  * Prometheus v2.7.2
-  * Grafana v6.0.1
-  * Alertmanager v0.17.0
-  * node-exporter v0.17.0
+* Ambassador v0.83.0
+* CertManager v0.11.0
+* Rook v1.1.2
+  * Ceph v14.2.4-20190917
+* kube-prometheus v0.2.0
+  * Prometheus v2.11.0
+  * Grafana v6.2.2
+  * Alertmanager v0.18.0
+  * node-exporter v0.18.1
 * eck-operator v0.8.1
   * ElasticSearch v7.1.0
   * Kibana v7.1.0

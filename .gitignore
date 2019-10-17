@@ -2,3 +2,4 @@ prometheus/vendor
 terraform/.terraform
 terraform/terraform.tfstate*
 terraform/kube
+.DS_Store
