@@ -1,0 +1,8 @@
+---
+alertmanager:
+  persistentVolume:
+    storageClassName: rook-ceph-block
+server:
+  persistentVolume:
+    storageClassName: rook-ceph-block
+  retention: "3d"
