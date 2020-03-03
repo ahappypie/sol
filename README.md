@@ -1,12 +1,10 @@
 # Sol
 
 ## Project Status
-Sol is currently under heavy development. ~The primary development hardware is a bare metal, single node `kubeadm` bootstrapped cluster. The following tools have been successfully deployed:~
-* ~Kubernetes: v1.13.3~
-* ~etcd: v3.2.24~
-* ~CoreDNS: v1.2.6~
-* ~WeaveNet: v2.5.1~
-* ~Rook: v0.9.3 (Ceph v13.2.4-20190109)~
+Sol is currently under heavy development. This branch (*master*) tracks Minikube-based development. The following tools have been successfully deployed (alternatively see the output of `images.sh` once running):
+* Kubernetes: v1.17.3
+* WeaveNet: v2.6.0
+* Rook: v1.2.5 (Ceph v14.2.7-20200206)
 
 **A version of Sol (called Mercury) went to production in July 2019!** Please see the `digitalocean` branch in this repository.
 
@@ -14,7 +12,6 @@ Sol is currently under heavy development. ~The primary development hardware is a
 Sol aims to present basic configuration for a Kubernetes reference architecture, using cloud native tools to form the backbone of any new cluster. In short, **Sol is a platform**.
 
 ### Core Tools
-+ [etcd](https://etcd.io) - CoreOS etcd is a key value store, used to provide a backing store for Kubernetes clusters.
 + [WeaveNet](https://weave.works/oss/net) - WeaveNet (from WeaveWorks) is an overlay network that forms a mesh, in the case of Kubernetes, for the pod network. It supports multicast and can bypass the overlay on certain providers.
 + [Rook](https://rook.io) - Rook is a storage orchestrator built from the ground up for Kubernetes. It provisions the excellent [Ceph](https://ceph.com) block storage system, and has alpha support for additional cloud-native storage systems like [Minio](https://minio.io) (S3-compatible object storage) and [EdgeFS](https://edgefs.io) (geo-transparent storage), along with controllers for databases like [CockroachDB](https://cockroachlabs.com) and [Apache Cassandra](https://cassandra.apache.org) and even the ability to deploy a good, old-fashioned NFS.
 + [Istio](https://istio.io) - Built on Lyft's [Envoy](https://envoyproxy.io) proxy, Istio manages a series of tools to create a service mesh and manage ingress and egress in Kubernetes. Istio has first-class support for [GRPC](https://grpc.io) and also integrates with metrics and tracing tools.
