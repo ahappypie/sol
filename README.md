@@ -8,7 +8,7 @@ Sol is currently under heavy development. ~The primary development hardware is a
 * ~WeaveNet: v2.5.1~
 * ~Rook: v0.9.3 (Ceph v13.2.4-20190109)~
 
-**A version of Sol (called Mercury) is in production at [Regent LP](https://www.regentlp.com)!** Please see the `digitalocean` branch in this repository.
+**A version of Sol (called Mercury) went to production in July 2019!** Please see the `digitalocean` branch in this repository.
 
 ### Goals
 Sol aims to present basic configuration for a Kubernetes reference architecture, using cloud native tools to form the backbone of any new cluster. In short, **Sol is a platform**.
@@ -21,9 +21,6 @@ Sol aims to present basic configuration for a Kubernetes reference architecture,
 + [Prometheus](https://prometheus.io) - Built by Soundcloud and based on Google's Borgmon, Prometheus is a metrics and alerting tool that uses a wide array of integrations. It collects time series data from every level of the stack - hardware, Kubernetes itself and your applications.
 + [ElasticSearch](https://elastic.co/products/elasticsearch)/[Fluentd](https://fluent.org)/[Kibana](https://elastic.co/products/kibana) - The venerable "EFK" stack, using Fluentd-based FluentBit as a forwarding service, with ElasticSearch for indexing and search, and Kibana for visualization. As a bonus, ElasticSearch can be reused by any number of applications looking for an indexing and search service.
 + [Jaeger](https://jaegertracing.io) - [OpenTracing](https://opentracing.io)-compatible tracing system originally built by Uber. Jaeger and OpenTracing trace calls within your applications and integrate with Istio to trace calls within your service mesh. Spans can be stored in ElasticSearch, which means you don't have to deploy yet another tool.
-
-### Additional tools
-+ [NATS](https://nats.io) - Lightweight message queue written in Go. NATS uses the Raft consensus algorithm to avoid heavy external coordinators like ZooKeeper. It also has a streaming layer than can be deployed on top of an existing NATS cluster to provide durable delivery.
 
 ### More reading
 All of these tools were chosen in part because they have significant community backing. Check out the respective projects here on Github. If there's another tool you're looking for, chances are it's listed on the Cloud Native Computing Foundation's [Landscape](https://github.com/cncf/landscape).
