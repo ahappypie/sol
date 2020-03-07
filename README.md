@@ -17,6 +17,9 @@ Sol is currently under heavy development. This branch (*master*) tracks Minikube
 * Promtail: v1.3.0
 * Loki: v1.3.0
 * Grafana: v6.6.2
+* Istio: v1.4.6
+
+*WARNING: this is a very heavy deployment for minikube. On macOS, using the hyperkit driver (from Docker Desktop) with 4 CPUs and 12 GB memory, the hyperkit VM regularly uses 2.5-3 full CPUs idle. If you are on a laptop, this will peg your fans and burn through your battery.*
 
 **A version of Sol (called Mercury) went to production in July 2019!** Please see the [`digitalocean`](https://github.com/ahappypie/sol/tree/digitalocean) branch in this repository.
 
