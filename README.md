@@ -2,11 +2,11 @@
 
 ## Project Status
 Sol is currently under heavy development. This branch (*master*) tracks Minikube-based development. The following tools have been successfully deployed (alternatively see the output of `images.sh` once running):
-* minikube: v1.7.3
+* minikube: v1.8.1
 * kubernetes: v1.17.3
   * etcd: v3.4.3-0
   * CoreDNS: v1.6.5
-* WeaveNet: v2.6.0
+* WeaveNet: v2.6.1
 * ~Rook: v1.2.5~ *seriously unstable on minikube, will be falling back to hostPath volumes for now*
   * ~Ceph: v14.2.7-20200206~
 * Prometheus: v2.16.0
