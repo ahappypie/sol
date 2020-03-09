@@ -7,8 +7,8 @@ Sol is currently under heavy development. This branch (*master*) tracks Minikube
   * etcd: v3.4.3-0
   * CoreDNS: v1.6.5
 * WeaveNet: v2.6.0
-* Rook: v1.2.5
-  * Ceph: v14.2.7-20200206
+* ~Rook: v1.2.5~ *seriously unstable on minikube, will be falling back to hostPath volumes for now*
+  * ~Ceph: v14.2.7-20200206~
 * Prometheus: v2.16.0
   * kube-state-metrics: v1.9.5
   * AlertManager: v0.20.0
