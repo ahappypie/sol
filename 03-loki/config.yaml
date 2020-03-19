@@ -1,4 +1,4 @@
 ---
 persistence:
   enabled: true
-  storageClassName: rook-ceph-block
+  # storageClassName: rook-ceph-block
