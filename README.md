@@ -5,7 +5,9 @@ For reference, the core tools deployed are:
 + [Rook](https://rook.io)
 + [Istio](https://istio.io)
 + [Prometheus](https://prometheus.io)
-+ [ElasticSearch](https://elastic.co/products/elasticsearch)/[Fluentd (*as Fluentbit*)](https://fluent.org)/[Kibana](https://elastic.co/products/kibana)
++ ~[ElasticSearch](https://elastic.co/products/elasticsearch)/[Fluentd (*as Fluentbit*)](https://fluent.org)/[Kibana](https://elastic.co/products/kibana)~
++ [Loki](https://grafana.com/oss/loki/)
++ [Grafana](https://grafana.com)
 + [Jaeger](https://jaegertracing.io)
 
 ### Proposal: Gen 3 Data Platform
@@ -19,6 +21,7 @@ At the core of 3rd generation data platforms is the intersection of schema and n
 + [Hudi](https://hudi.apache.org) - Spark library for **H**adoop **U**pserts **D**eletes and **I**ncremental, originally built at Uber to manage ETL for late-arriving data. Works by managing Avro and Parquet files in object storage, originally HDFS, but now S3 and S3-compatible stores in either copy-on-write or merge-on-read modes.
 + [Minio](https://minio.io) - open source S3-compatible object store. Runs in distributed mode on Kubernetes, backed by Rook block volumes or deployed by the Rook operator itself.
 + [Hive Metastore](https://hive.apache.org) - part of the Hive data warehouse, the metastore is responsible for holding schema information about objects in storage, in this case, Minio. Thanks to Hudi's support library and sync tool, writes from Spark to S3 can also update the Hive schema with any changes. Needs a relational database to persist schema information, like [MariaDB](https://mariadb.org) or [Postgres](https://postgresql.org), which can store on Rook.
++ [Alluxio](https://alluxio.io) - formerly Tachyon, Alluxio is a data orchestration layer that primarily provides a hot-path cache over object storage. Deployed on the same nodes as Presto, it caches frequently accessed data in memory to avoid network transfer and read costs.
 + [Presto](https://prestosql.io) - built by Facebook as they outgrew Hive, Presto is a distributed SQL engine. Its notion of catalogs allows it to query across data sources. It can use the Hive metastore to structure queries over data in S3. There's a bit of controversy regarding the open source governance, with 2 different forks, the Facebook/Uber/Linux Foundation led PrestoDB, and PrestoSQL, linked here, which was founded by the original engineers. They are, at this point, more or less the same.
 + [Airflow](https://airflow.apache.org) - yet another industry standard, Airflow is a workflow orchestration engine which organizes work as directed acyclic graphs, or DAGs. After several years of development, Airflow's Kubernetes integrations are plugged in to every part of the engine. Requires a relational database as storage.
-+ [Amundsen](https://github.com/lyft/amundsen) - Lyft's metadata discovery service. Ingests information from various points to construct a graph of your data (in either Neo4j or Apache Atlas). Allows anyone who needs to find data to discover the who, what, when, where and how of your datasets. has a Helm chart for reference in the repo.
++ [Amundsen](https://github.com/lyft/amundsen) - Lyft's metadata discovery service. Ingests information from various points to construct a graph of your data (in either Neo4j or Apache Atlas). Allows anyone who needs to find data to discover the who, what, when, where and how of your datasets. Has a Helm chart for reference in the repo.
