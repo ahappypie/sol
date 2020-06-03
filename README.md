@@ -9,7 +9,7 @@ Sol is currently under heavy development. This branch (*master*) tracks Minikube
 * WeaveNet: v2.6.1
 * Rook: v1.3.4
   * Ceph: v15.2.3-20200530
-* Prometheus: v2.16.0
+* Prometheus: v2.18.1
   * kube-state-metrics: v1.9.5
   * AlertManager: v0.20.0
   * NodeExporter: v0.18.1

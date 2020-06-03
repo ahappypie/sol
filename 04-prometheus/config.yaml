@@ -1,8 +1,12 @@
 ---
-# alertmanager:
-  # persistentVolume:
-  #   storageClassName: rook-ceph-block
+alertmanager:
+  persistentVolume:
+    enabled: true
+    storageClassName: rook-ceph-block
+    size: 1Gi
 server:
-  # persistentVolume:
-  #   storageClassName: rook-ceph-block
-  retention: "3d"
+  persistentVolume:
+    enabled: true
+    storageClassName: rook-ceph-block
+    retention: "3d"
+    size: 3Gi

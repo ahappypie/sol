@@ -5,15 +5,17 @@ metadata:
   labels:
     {{- include "prometheus.alertmanager.labels" . | nindent 4 }}
   name: {{ template "prometheus.alertmanager.fullname" . }}
+{{ include "prometheus.namespace" . | indent 2 }}
 spec:
   selector:
     matchLabels:
       {{- include "prometheus.alertmanager.matchLabels" . | nindent 6 }}
   replicas: {{ .Values.alertmanager.replicaCount }}
-  {{- if .Values.server.strategy }}
+  {{- if .Values.alertmanager.strategy }}
   strategy:
-{{ toYaml .Values.server.strategy | indent 4 }}
-  {{- end }}
+{{ toYaml .Values.alertmanager.strategy | trim | indent 4 }}
+    {{ if eq .Values.alertmanager.strategy.type "Recreate" }}rollingUpdate: null{{ end }}
+{{- end }}
   template:
     metadata:
     {{- if .Values.alertmanager.podAnnotations }}
@@ -30,6 +32,10 @@ spec:
       schedulerName: "{{ .Values.alertmanager.schedulerName }}"
 {{- end }}
       serviceAccountName: {{ template "prometheus.serviceAccountName.alertmanager" . }}
+      {{- if .Values.alertmanager.extraInitContainers }}
+      initContainers:
+{{ toYaml .Values.alertmanager.extraInitContainers | indent 8 }}
+      {{- end }}
 {{- if .Values.alertmanager.priorityClassName }}
       priorityClassName: "{{ .Values.alertmanager.priorityClassName }}"
 {{- end }}
