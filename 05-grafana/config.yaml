@@ -1,5 +1,18 @@
 ---
 persistence:
   enabled: true
-  # storageClassName: rook-ceph-block
-  size: 2Gi
+  storageClassName: rook-ceph-block
+  size: 500Mi
+
+datasources:
+  datasources.yaml:
+    apiVersion: 1
+    datasources:
+    - name: Prometheus
+      type: prometheus
+      url: http://prometheus-server.monitoring.svc.cluster.local:80
+      access: proxy
+      isDefault: true
+    - name: Loki
+      type: loki
+      url: http://loki.logging.svc.cluster.local:3100

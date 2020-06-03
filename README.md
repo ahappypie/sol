@@ -16,7 +16,7 @@ Sol is currently under heavy development. This branch (*master*) tracks Minikube
   * PushGateway: v1.0.1
 * Promtail: v1.5.0
 * Loki: v1.5.0
-* Grafana: v6.6.2
+* Grafana: v7.0.1
 * Istio: v1.4.6
 
 **Due to issues with the hyperkit driver, development has switched to Linux/KVM. Furthermore, the recommended resources have been bumped to 6 vCPUs and 24GB RAM.**
