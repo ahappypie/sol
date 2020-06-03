@@ -2,7 +2,7 @@
 
 ## Project Status
 Sol is currently under heavy development. This branch (*master*) tracks Minikube-based development. The following tools have been successfully deployed (alternatively see the output of `images.sh` once running):
-* minikube: v1.8.1
+* minikube: v1.11.0
 * kubernetes: v1.18.3
   * etcd: v3.4.3-0
   * CoreDNS: v1.6.7
@@ -14,8 +14,8 @@ Sol is currently under heavy development. This branch (*master*) tracks Minikube
   * AlertManager: v0.20.0
   * NodeExporter: v0.18.1
   * PushGateway: v1.0.1
-* Promtail: v1.3.0
-* Loki: v1.3.0
+* Promtail: v1.5.0
+* Loki: v1.5.0
 * Grafana: v6.6.2
 * Istio: v1.4.6
 
