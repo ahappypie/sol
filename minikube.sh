@@ -9,7 +9,7 @@ fi
 minikube start \
 --cpus 6 \
 --disk-size 20000 \
---kubernetes-version 1.18.3 \
+--kubernetes-version 1.19.2 \
 --memory 24576 \
 --driver ${DRIVER} \
 --network-plugin=cni \
@@ -19,6 +19,6 @@ if [ $(uname) = "Linux" ]
   then
     qemu-img create -f raw minikube-rook-data-30G 30G
     virsh -c qemu:///system attach-disk minikube $(pwd)/minikube-rook-data-30G vdb --cache none --persistent
+    minikube stop
+    minikube start
 fi
-
-minikube stop && minikube start

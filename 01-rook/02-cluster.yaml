@@ -17,6 +17,7 @@ data:
   config: |
     [global]
     osd_pool_default_size = 1
+    mon_warn_on_pool_no_redundancy = false
 ---
 apiVersion: ceph.rook.io/v1
 kind: CephCluster
@@ -26,7 +27,7 @@ metadata:
 spec:
   dataDirHostPath: /var/lib/rook
   cephVersion:
-    image: ceph/ceph:v15.2.3-20200530
+    image: ceph/ceph:v15.2.5-20200916
     allowUnsupported: true
   mon:
     count: 1
@@ -39,3 +40,8 @@ spec:
     useAllNodes: true
     useAllDevices: true
     #deviceFilter:
+  healthCheck:
+    daemonHealth:
+      mon:
+        interval: 45s
+        timeout: 600s
